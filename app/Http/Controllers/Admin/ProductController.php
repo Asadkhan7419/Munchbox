@@ -12,8 +12,10 @@ class ProductController extends Controller
 {
     public function indexProduct () {
         // $products = Product::all();
-        $products = DB::table('products')->leftjoin('categories', 'products.category', '=', 'categories.id')
-        ->select('products.id','products.image','products.name','products.sku','products.stock','products.price','products.tags','products.updated_at','categories.name as category_name')
+        // $products = DB::table('products')->leftjoin('categories', 'products.C_id', '=', 'categories.C_id')
+        // ->select('products.id','products.image','products.name','products.sku','products.stock','products.price','products.tags','products.updated_at','categories.name as category_name')
+        // ->get();
+        $products = Product::with('category')
         ->get();
         return view('pages.admin.product.product', compact('products'));
         }
@@ -38,14 +40,14 @@ class ProductController extends Controller
             $product->sku = $request->sku;
             $product->stock = $request->stock;
             $product->price = $request->price;
-            $product->category = $request->category;
+            $product->C_id = $request->category;
             $product->tags = $request->tags;
             $product->description = $request->description;
             $product->save();
             if($request->hasFile('image')){
                 $imageName = $request->image->getClientOriginalName();
                 $imageName= time().'.'.$request->image->extension();
-                $request->image->move(public_path('web_logo'), $imageName);
+                $request->image->move(public_path('menu'), $imageName);
                 $product->image = $imageName;
                 $product->save();
             }
@@ -75,14 +77,14 @@ class ProductController extends Controller
                 $product->sku = $request->sku;
                 $product->stock = $request->stock;
                 $product->price = $request->price;
-                $product->category = $request->category;
+                $product->C_id = $request->category;
                 $product->tags = $request->tags;
                 $product->description = $request->description;
                 $product->update();
                 if($request->hasFile('image')){
                     $imageName = $request->image->getClientOriginalName();
                     $imageName= time().'.'.$request->image->extension();
-                    $request->image->move(public_path('web_logo'), $imageName);
+                    $request->image->move(public_path('menu'), $imageName);
                     $product->image = $imageName;
                     $product->update();
                 }

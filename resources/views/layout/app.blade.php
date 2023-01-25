@@ -44,6 +44,8 @@
 
     @php
         $setting = \App\Models\Setting::first();
+        $product = \App\Models\Product::first();
+        $categories = \App\Models\Category::first();
     @endphp
 @include('layout.includes.header')
 

@@ -34,19 +34,19 @@ class CategoryController extends Controller
         if($request->hasFile('image')){
             $imageName = $request->image->getClientOriginalName();
             $imageName= time().'.'.$request->image->extension();
-            $request->image->move(public_path('web_logo'), $imageName);
+            $request->image->move(public_path('cuisine'), $imageName);
             $category->image = $imageName;
             $category->save();
         }
         return redirect('/admin/category');
     }
 
-    public function categoryEdit ($id){
-        $categories = Category::find($id);
+    public function categoryEdit ($C_id){
+        $categories = Category::find($C_id);
         return view('pages.admin.category.categoryEdit', compact('categories'));
     }
 
-    public function categoryUpdate (Request $request, $id){
+    public function categoryUpdate (Request $request, $C_id){
         $request->validate([
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'name' => 'nullable',
@@ -54,7 +54,7 @@ class CategoryController extends Controller
                 'description' => 'nullable',
              ]);
 
-            $category = Category::find($id);
+            $category = Category::find($C_id);
             $category->name = $request->name;
             $category->slug = $request->slug;
             $category->description = $request->description;
@@ -62,15 +62,15 @@ class CategoryController extends Controller
             if($request->hasFile('image')){
                 $imageName = $request->image->getClientOriginalName();
                 $imageName= time().'.'.$request->image->extension();
-                $request->image->move(public_path('web_logo'), $imageName);
+                $request->image->move(public_path('cuisine'), $imageName);
                 $category->image = $imageName;
                 $category->update();
             }
             return redirect('/admin/category');
     }
 
-    public function categoryDelete($id){
-        $category = Category::find($id);
+    public function categoryDelete($C_id){
+        $category = Category::find($C_id);
         $category->delete();
         return back();
     }

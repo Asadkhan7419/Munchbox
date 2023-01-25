@@ -44,13 +44,13 @@
                                         @foreach($categories as $data)
                                       <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
-                                        <td><img src="{{ asset('/web_logo/'.$data->image) ?? ''}}" alt=""></td>
+                                        <td><img src="{{ asset('/cuisine/'.$data->image) ?? ''}}" alt=""></td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->slug}}</td>
                                         <td>{{$data->description}}</td>
                                         <td>
-                                            <a href="{{url('/admin/category/edit/'.$data->id)}}" class="btn btn-success">Edit</a>
-                                            <a href="{{url('/admin/category/'.$data->id)}}" class="btn btn-danger">Delete</a>
+                                            <a href="{{url('/admin/category/edit/'.$data->C_id)}}" class="btn btn-success">Edit</a>
+                                            <a href="{{url('/admin/category/'.$data->C_id)}}" class="btn btn-danger">Delete</a>
                                         </td>
                                       </tr>
                                       @endforeach

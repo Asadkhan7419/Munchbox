@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="product-caption">
                                     <div class="title-box">
-                                        <h6 class="product-title"><a href="restaurant.html" class="text-light-black "> Great Burger</a></h6>
+                                        <h6 class="product-title"><a href="{{url('/restaurant')}}" class="text-light-black "> Great Burger</a></h6>
                                         <div class="tags"> <span class="text-custom-white rectangle-tag bg-yellow">
                         3.1
                       </span>
@@ -684,7 +684,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="banner-adv2 mb-xl-20">
-                        <img src="assets/img/restaurants/1110x100/vbanner-3.jpg" class="img-fluid full-width" alt="banner"> <span class="text">Unlimited Free Delivery with. <img src="assets/img/tag.jpg" alt="logo"> 
+                        <img src="assets/img/restaurants/1110x100/vbanner-3.jpg" class="img-fluid full-width" alt="banner"> <span class="text">Unlimited Free Delivery with. <img src="assets/img/tag.jpg" alt="logo">
                             <a href="restaurant.html" class="btn-second btn-submit">Try 30 Days FREE</a></span>
                         <span class="close-banner"></span>
                         <div class="overlay overlay-bg"></div>
@@ -1018,7 +1018,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="banner-adv2 mb-xl-20">
-                        <img src="assets/img/restaurants/1110x100/vbanner-1.jpg" class="img-fluid full-width" alt="banner"> <span class="text">Unlimited Free Delivery with. <img src="assets/img/tag.jpg" alt="logo"> 
+                        <img src="assets/img/restaurants/1110x100/vbanner-1.jpg" class="img-fluid full-width" alt="banner"> <span class="text">Unlimited Free Delivery with. <img src="assets/img/tag.jpg" alt="logo">
                             <a href="restaurant.html" class="btn-second btn-submit">Try 30 Days FREE</a></span>
                         <span class="close-banner"></span>
                         <div class="overlay overlay-bg"></div>

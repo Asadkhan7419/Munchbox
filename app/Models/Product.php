@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    protected $primerykey = "id";
+    function category(){
+        return $this->hasone(Category::class, 'C_id');
+    }
 }

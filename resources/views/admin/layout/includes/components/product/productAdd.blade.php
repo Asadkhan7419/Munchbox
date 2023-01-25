@@ -48,7 +48,7 @@
                                             <select name="category" id="category"  class="form-control underlined">
                                                 <option disabled selected value>Select Category</option>
                                                 @foreach ($categories as $data)
-                                                <option value="{{$data->id}}">{{$data->name}}</option>
+                                                <option value="{{$data->C_id}}">{{$data->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

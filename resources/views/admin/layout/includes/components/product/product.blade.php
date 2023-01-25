@@ -48,12 +48,12 @@
                                         @foreach($products as $data)
                                       <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
-                                        <td><img src="{{ asset('/web_logo/'.$data->image) ?? ''}}" alt=""></td>
+                                        <td><img src="{{ asset('/menu/'.$data->image) ?? ''}}" alt="" width="75px" height="75px"></td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->sku}}</td>
                                         <td>{{$data->stock}}</td>
-                                        <td>{{$data->price}}.$</td>
-                                        <td>{{$data->category_name}}</td>
+                                        <td>{{$data->price}}</td>
+                                        <td>{{$data->category->name}}</td>
                                         <td>{{$data->tags}}</td>
                                         <td>{{$data->updated_at}}</td>
                                         <td>

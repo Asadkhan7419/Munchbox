@@ -7,6 +7,7 @@ use App\Http\Controllers\GeolocatorController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderdetailsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -57,9 +58,9 @@ use App\Http\Controllers\Admin\AuthController as admin;
     Route::get('/admin/category', [CategoryController::class, 'indexCategory']);
     Route::get('/admin/category/form', [CategoryController::class, 'categoryForm']);
     Route::post('/admin/category/form', [CategoryController::class, 'categoryInsert'])->name('submitCategory');
-    Route::get('/admin/category/edit/{id}', [CategoryController::class, 'categoryEdit']);
-    Route::put('/admin/category/edit/{id}', [CategoryController::class, 'categoryUpdate']);
-    Route::get('/admin/category/{id}', [CategoryController::class, 'categoryDelete']);
+    Route::get('/admin/category/edit/{C_id}', [CategoryController::class, 'categoryEdit']);
+    Route::put('/admin/category/edit/{C_id}', [CategoryController::class, 'categoryUpdate']);
+    Route::get('/admin/category/{C_id}', [CategoryController::class, 'categoryDelete']);
     // Admin/Products Routes
     Route::get('/admin/product', [ProductController::class, 'indexproduct']);
     Route::get('/admin/product/add', [ProductController::class, 'productAdd']);
@@ -85,6 +86,7 @@ use App\Http\Controllers\Admin\AuthController as admin;
     Route::get('/admin/show', [MenuController::class, 'show'])->name('show');
     // web Routes
     Route::get('/checkout', [CheckoutController::class, 'index']);
+    Route::get('/restaurant', [RestaurantController::class, 'index']);
     Route::get('/orderdetails', [OrderdetailsController::class, 'index']);
     Route::get('/profile', [ProfileController::class, 'profile']);
     Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('update.profile');

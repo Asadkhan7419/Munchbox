@@ -14,7 +14,7 @@
                                         <label for="title">Category image</label>
                                         <div class="row">
                                             {{-- <img src="{{ asset('/web_logo/'.$setting->logo) ?? ''}}" alt="{{$setting->logo ?? ''}}" /><br> --}}
-                                            <input type="file" class="form-control dropify" name="image" id="image" data-default-file= "{{ asset('/web_logo/'.$products->image) ?? ''}}">
+                                            <input type="file" class="form-control dropify" name="image" id="image" data-default-file= "{{ asset('/menu/'.$products->image) ?? ''}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -46,7 +46,7 @@
                                         <div class="row">
                                             <select name="category" id="category"  class="form-control underlined">
                                                 @foreach ($categories as $data)
-                                                <option value="{{$data->id}}">{{$data->name}}</option>
+                                                <option value="{{$data->C_id}}">{{$data->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

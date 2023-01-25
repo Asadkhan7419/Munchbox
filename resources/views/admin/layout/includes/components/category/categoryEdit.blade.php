@@ -4,7 +4,7 @@
                 <div class="container">
                     <div class="container-md">
                         <div class="auth-content">
-                            <form action="{{('/admin/category/edit/'.$categories->id)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{url('/admin/category/edit/'.$categories->C_id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div>
@@ -14,7 +14,7 @@
                                         <label for="title">Category image</label>
                                         <div class="row">
                                             {{-- <img src="{{ asset('/web_logo/'.$setting->logo) ?? ''}}" alt="{{$setting->logo ?? ''}}" /><br> --}}
-                                            <input type="file" class="form-control dropify" name="image" id="image" data-default-file= "{{ asset('/web_logo/'.$categories->image) ?? ''}}">
+                                            <input type="file" class="form-control dropify" name="image" id="image" data-default-file= "{{ asset('/cuisine/'.$categories->image) ?? ''}}">
                                         </div>
                                     </div>
                                     <div class="form-group">

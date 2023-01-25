@@ -16,62 +16,16 @@
                                     </div> <span class="text-light-black cat-name">Brooklyn</span>
                                 </a>
                             </div>
+                           @foreach ($categories as $data )
                             <div class="swiper-slide">
                                 <a href="restaurant.html" class="categories">
                                     <div class="icon text-custom-white bg-light-green ">
-                                        <img src="assets/img/restaurants/125x125/cuisine-1.jpg" class="rounded-circle" alt="categories">
-                                    </div> <span class="text-light-black cat-name">Italian </span>
+                                        <img src="{{ asset('/cuisine/'.$data->image) ?? ''}}" class="rounded-circle" alt="categories">
+                                    </div> <span class="text-light-black cat-name">{{$data->name}} </span>
                                 </a>
                             </div>
-                            <div class="swiper-slide">
-                                <a href="restaurant.html" class="categories">
-                                    <div class="icon text-custom-white bg-light-green ">
-                                        <img src="assets/img/restaurants/125x125/cuisine-2.jpg" class="rounded-circle" alt="categories">
-                                    </div> <span class="text-light-black cat-name">Thai </span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="restaurant.html" class="categories">
-                                    <div class="icon text-custom-white bg-light-green ">
-                                        <img src="assets/img/restaurants/125x125/cuisine-3.jpg" class="rounded-circle" alt="categories">
-                                    </div> <span class="text-light-black cat-name">Chinese </span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="restaurant.html" class="categories">
-                                    <div class="icon text-custom-white bg-light-green ">
-                                        <img src="assets/img/restaurants/125x125/cuisine-4.jpg" class="rounded-circle" alt="categories">
-                                    </div> <span class="text-light-black cat-name">Mexican </span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="restaurant.html" class="categories">
-                                    <div class="icon text-custom-white bg-light-green ">
-                                        <img src="assets/img/restaurants/125x125/cuisine-5.jpg" class="rounded-circle" alt="categories">
-                                    </div> <span class="text-light-black cat-name">Indian </span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="restaurant.html" class="categories">
-                                    <div class="icon text-custom-white bg-light-green ">
-                                        <img src="assets/img/restaurants/125x125/cuisine-6.jpg" class="rounded-circle" alt="categories">
-                                    </div> <span class="text-light-black cat-name">Lebanese </span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="restaurant.html" class="categories">
-                                    <div class="icon text-custom-white bg-light-green ">
-                                        <img src="assets/img/restaurants/125x125/cuisine-7.jpg" class="rounded-circle" alt="categories">
-                                    </div> <span class="text-light-black cat-name">Japanese </span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="restaurant.html" class="categories">
-                                    <div class="icon text-custom-white bg-light-green ">
-                                        <img src="assets/img/restaurants/125x125/cuisine-8.jpg" class="rounded-circle" alt="categories">
-                                    </div> <span class="text-light-black cat-name">American </span>
-                                </a>
-                            </div>
+                            @endforeach
+
                         </div>
                         <!-- Add Arrows -->
                         <div class="swiper-button-next"></div>
