@@ -218,55 +218,48 @@
                                                     <thead class="thead-light">
                                                         <tr>
                                                             <th scope="col">ID</th>
+                                                            <th scope="col">Order no</th>
                                                             <th class="table-web" scope="col">Created</th>
-                                                            <th class="table-web" scope="col">Time Slot</th>
-                                                            <th class="table-web" scope="col">Method</th>
-                                                            <th scope="col">Last status</th>
                                                             <th class="table-web" scope="col">Client</th>
-                                                            <th class="table-web" scope="col">Items</th>
-                                                            <th class="table-web" scope="col">Driver</th>
-                                                            <th class="table-web" scope="col">Price</th>
-                                                            <th class="table-web" scope="col">Delivery</th>
+                                                            <th class="table-web" scope="col">Quantity</th>
+                                                            <th class="table-web" scope="col">Item name</th>
+                                                            <th class="table-web" scope="col">Subtotal</th>
+
                                                             <th scope="col">Actions</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($order as $data )
+
+                                                        {{-- @php
+                                                            dd($data);
+                                                        @endphp --}}
                                                         <tr>
                                                             <td>
-
                                                                 <a class="btn badge badge-success badge-pill"
-                                                                    href="https://foodtiger.site/orders/565">#565</a>
-                                                            </td>
-
-                                                            <td class="table-web">
-                                                                Salı, 17 Ocak 2023 07:40
-                                                            </td>
-                                                            <td class="table-web">
-                                                                10:30 - 11:00
-                                                            </td>
-                                                            <td class="table-web">
-                                                                <span
-                                                                    class="badge badge-primary badge-pill">Delivery</span>
+                                                                    href="https://foodtiger.site/orders/565">{{$data->id}}</a>
                                                             </td>
                                                             <td>
-                                                                <span
-                                                                    class="badge badge-warning badge-pill">accepted_by_admin</span>
+                                                                <a class="btn badge badge-success badge-pill"
+                                                                    href="https://foodtiger.site/orders/565">#{{$data->order->order_number}}</a>
                                                             </td>
                                                             <td class="table-web">
-                                                                Demo Staff 1
+                                                                {{$data->updated_at}}
                                                             </td>
 
                                                             <td class="table-web">
-                                                                2
+                                                                {{$data->order->customer_id}}
                                                             </td>
-                                                            <td class="table-web">
 
+                                                            <td class="table-web">
+                                                                {{$data->quantity}}
                                                             </td>
                                                             <td class="table-web">
-                                                                €55.97
+                                                                {{$data->item}}
                                                             </td>
                                                             <td class="table-web">
-                                                                €7.00 </td>
+                                                                {{$data->price * $data->quantity }}                                                          </td>
+                                                            </td>
                                                             <td>
                                                                 <a href="https://foodtiger.site/updatestatus/rejected_by_restaurant/565"
                                                                     class="btn btn-sm btn-danger">rejected_by_restaurant</a>
@@ -277,6 +270,7 @@
                                                             </td>
 
                                                         </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

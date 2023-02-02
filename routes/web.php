@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Authcontroller;
+use App\Http\Controllers\Authcontroller as user;
 use App\Http\Controllers\GeolocatorController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderdetailsController;
@@ -17,8 +17,6 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AuthController as admin;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,10 +37,10 @@ use App\Http\Controllers\Admin\AuthController as admin;
     Route::get('/admin/reset', [admin::class, 'adminReset']);
 
     // web Routes
-    // Route::get('/login', [Authcontroller::class, 'indexlogin'])->name('login');
-    // Route::post('/login', [Authcontroller::class, 'login']);
-    // Route::get('/register', [Authcontroller::class, 'index']);
-    // Route::post('/register', [Authcontroller::class, 'register']);
+    Route::get('/login', [user::class, 'indexlogin'])->name('login');
+    Route::post('/login', [user::class, 'login']);
+    Route::get('/register', [user::class, 'index']);
+    Route::post('/register', [user::class, 'register']);
     Route::get('/geolocator', [GeolocatorController::class, 'index']);
     Route::get('/orderDetails', [OrderdetailsController::class, 'index']);
     Route::get('/list_view', [HomeController::class, 'listview']);
@@ -87,7 +85,13 @@ use App\Http\Controllers\Admin\AuthController as admin;
     // web Routes
     Route::get('/checkout', [CheckoutController::class, 'index']);
     Route::get('/restaurant', [RestaurantController::class, 'index']);
+    Route::get('/cart', [RestaurantController::class, 'cart'])->name('cart');
+    Route::get('/add-to-cart/{id}', [RestaurantController::class, 'addToCart'])->name('add.to.cart');
+    Route::patch('/update-cart', [RestaurantController::class, 'update'])->name('update.cart');
+    Route::post('/remove',[RestaurantController::class, 'remove'])->name('remove');
+    Route::get('/empty',[RestaurantController::class, 'empty'])->name('empty');
     Route::get('/orderdetails', [OrderdetailsController::class, 'index']);
+    Route::post('/orderstore', [OrderdetailsController::class, 'store']);
     Route::get('/profile', [ProfileController::class, 'profile']);
     Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('update.profile');
 });
@@ -96,4 +100,4 @@ use App\Http\Controllers\Admin\AuthController as admin;
     // Admin logout route
     Route::get('/admin/logout', [admin::class, 'logout']);
     // web logout route
-    Route::get('/logout', [Authcontroller::class, 'logout']);
+    Route::get('/logout', [user::class, 'logout']);

@@ -8,7 +8,7 @@
                         <div class="logo mainNavCol">
                             <a href="/">
                                 {{-- <img src="assets/img/logo.png" class="img-fluid" alt="Logo"> --}}
-                                <img src="{{ asset('/web_logo/'.$setting->logo) ?? ''}}" class="img-fluid" alt="Logo">
+                                <img src="{{ asset('/web_logo/' . $setting->logo) ?? '' }}" class="img-fluid" alt="Logo">
                             </a>
                         </div>
                         <!-- logo -->
@@ -17,19 +17,22 @@
                                 <div class="row">
                                     <!-- location picker -->
                                     <div class="col-lg-6 col-md-5">
-                                        <a href="#" class="delivery-add p-relative"> <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                        <a href="#" class="delivery-add p-relative"> <span class="icon"><i
+                                                    class="fas fa-map-marker-alt"></i></span>
                                             {{-- <span class="address">Brooklyn, NY</span> --}}
-                                            <span class="address">{{$setting->location ?? ''}}</span>
+                                            <span class="address">{{ $setting->location ?? '' }}</span>
                                         </a>
                                         <div class="location-picker">
-                                            <input type="text" class="form-control" placeholder="Enter a new address">
+                                            <input type="text" class="form-control"
+                                                placeholder="Enter a new address">
                                         </div>
                                     </div>
                                     <!-- location picker -->
                                     <!-- search -->
                                     <div class="col-lg-6 col-md-7">
                                         <div class="search-box padding-10">
-                                            <input type="text" class="form-control" placeholder="Pizza, Burger, Chinese">
+                                            <input type="text" class="form-control"
+                                                placeholder="Pizza, Burger, Chinese">
                                         </div>
                                     </div>
                                     <!-- search -->
@@ -42,17 +45,20 @@
                                     <span>Order Now</span>
                                 </a>
                             </div>
-                            <div >
-                            <!-- class="catring parent-megamenu" -->
+                            <div>
+                                {{-- @php
+                                    dd(Auth::guard('customer')->user()->firstName);
+                                @endphp --}}
+                                <!-- class="catring parent-megamenu" -->
                                 @guest
-                                <div>
-                                <a href="/login"> <span>Login </span>|
+                                    <div>
+                                        <a href="/login"> <span>Login </span>|
 
-                                <a href="/register"> <span>Sign-up </span>
-                                </div>
+                                            <a href="/register"> <span>Sign-up </span>
+                                    </div>
 
                                 @endguest
-                                    <!-- <i class="fas fa-bars"></i> -->
+                                <!-- <i class="fas fa-bars"></i> -->
                                 </a>
 
                                 <!-- <a href="#"> <span>Pages <i class="fas fa-caret-down"></i></span>
@@ -135,12 +141,12 @@
                                                                 </div>
                                                                 <ul>
                                                                      @guest
-                                                                    <li><a href="{{url('/login')}}" class="text-light-white fw-500">Login</a>
-                                                                    </li>
+                                                                        <li><a href="{{ url('/login') }}" class="text-light-white fw-500">Login</a>
+                                                                        </li>
                                                                     @endguest
                                                                     @auth
-                                                                    <li><a href="{{url('/logout')}}" class="text-light-white fw-500">Logout</a>
-                                                                    </li>
+                                                                        <li><a href="{{ url('/logout') }}" class="text-light-white fw-500">Logout</a>
+                                                                        </li>
                                                                     @endauth
                                                                     <li><a href="/register" class="text-light-white fw-500">Sign-up</a>
                                                                     </li>
@@ -163,194 +169,189 @@
                             </div>
                             <!-- mobile search -->
                             <div class="mobile-search">
-                                <a href="#" data-toggle="modal" data-target="#search-box"> <i class="fas fa-search"></i>
+                                <a href="#" data-toggle="modal" data-target="#search-box"> <i
+                                        class="fas fa-search"></i>
                                 </a>
                             </div>
                             <!-- mobile search -->
                             <!-- user account -->
-                            <!-- @auth -->
-                            <div class="user-details p-relative">
-                                <a href="#" class="text-light-white fw-500">
-                                    <img style="height:40px" src="{{asset('/user_images/'.auth()->user()->image)}}" class="rounded-circle" alt="userimg"> <span>{{ Auth::user()->first_name }} </span>
+                             @auth
+                                <div class="user-details p-relative">
+                                    <a href="#" class="text-light-white fw-500">
+                                        <img style="height:40px" src="{{ asset('/user_images/' . auth()->user()->image) }}"
+                                            class="rounded-circle" alt="userimg"> <span>{{ Auth::user()->firstName }}
+                                        </span>
 
-                                </a>
-                                <div class="user-dropdown">
-                                    <ul>
-                                        <li>
-                                            <a href="order-details.html">
-                                                <div class="icon"><i class="flaticon-rewind"></i>
-                                                </div> <span class="details">Past Orders</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="order-details.html">
-                                                <div class="icon"><i class="flaticon-takeaway"></i>
-                                                </div> <span class="details">Upcoming Orders</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon"><i class="flaticon-breadbox"></i>
-                                                </div> <span class="details">Saved</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon"><i class="flaticon-gift"></i>
-                                                </div> <span class="details">Gift cards</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/profile">
-                                                <div class="icon"><i class="flaticon-refer" ></i>
-                                                </div> <span class="details">Profile</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon"><i class="flaticon-diamond"></i>
-                                                </div> <span class="details">Perks</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon"><i class="flaticon-user"></i>
-                                                </div> <span class="details">Account</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon"><i class="flaticon-board-games-with-roles"></i>
-                                                </div> <span class="details">Help</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="user-footer"> <span class="text-light-black"></span> <a href="{{url('/logout')}}">Sign Out</a>
+                                    </a>
+                                    <div class="user-dropdown">
+                                        <ul>
+                                            <li>
+                                                <a href="order-details.html">
+                                                    <div class="icon"><i class="flaticon-rewind"></i>
+                                                    </div> <span class="details">Past Orders</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="order-details.html">
+                                                    <div class="icon"><i class="flaticon-takeaway"></i>
+                                                    </div> <span class="details">Upcoming Orders</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon"><i class="flaticon-breadbox"></i>
+                                                    </div> <span class="details">Saved</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon"><i class="flaticon-gift"></i>
+                                                    </div> <span class="details">Gift cards</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/profile">
+                                                    <div class="icon"><i class="flaticon-refer"></i>
+                                                    </div> <span class="details">Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon"><i class="flaticon-diamond"></i>
+                                                    </div> <span class="details">Perks</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon"><i class="flaticon-user"></i>
+                                                    </div> <span class="details">Account</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon"><i class="flaticon-board-games-with-roles"></i>
+                                                    </div> <span class="details">Help</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="user-footer"> <span class="text-light-black"></span> <a
+                                                href="{{ url('/logout') }}">Sign Out</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- @endauth -->
+                             @endauth
                             <!-- mobile search -->
                             <!-- user notification -->
                             @auth
-                            <div class="cart-btn notification-btn">
-                                <a href="#" class="text-light-green fw-700"> <i class="fas fa-bell"></i>
-                                    <span class="user-alert-notification"></span>
-                                </a>
-                                <div class="notification-dropdown">
-                                    <div class="product-detail">
-                                        <a href="#">
-                                            <div class="img-box">
-                                                <img src="assets/img/shop-1.png" class="rounded" alt="image">
-                                            </div>
-                                            <div class="product-about">
-                                                <p class="text-light-black">Lil Johnny’s</p>
-                                                <p class="text-light-white">Spicy Maxican Grill</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="rating-box">
-                                        <p class="text-light-black">How was your last order ?.</p> <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                                        <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                                        <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                                        <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                                        <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                                        <cite class="text-light-white">Ordered 2 days ago</cite>
-                                    </div>
+                                <div class="cart-btn notification-btn">
+                                    <a href="#" class="text-light-green fw-700"> <i class="fas fa-bell"></i>
+                                        <span class="user-alert-notification"></span>
+                                    </a>
+                                    <div class="notification-dropdown">
+                                        <div class="product-detail">
+                                            <a href="#">
+                                                <div class="img-box">
+                                                    <img src="assets/img/shop-1.png" class="rounded" alt="image">
+                                                </div>
+                                                <div class="product-about">
+                                                    <p class="text-light-black">Lil Johnny’s</p>
+                                                    <p class="text-light-white">Spicy Maxican Grill</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="rating-box">
+                                            <p class="text-light-black">How was your last order ?.</p> <span
+                                                class="text-dark-white"><i class="fas fa-star"></i></span>
+                                            <span class="text-dark-white"><i class="fas fa-star"></i></span>
+                                            <span class="text-dark-white"><i class="fas fa-star"></i></span>
+                                            <span class="text-dark-white"><i class="fas fa-star"></i></span>
+                                            <span class="text-dark-white"><i class="fas fa-star"></i></span>
+                                            <cite class="text-light-white">Ordered 2 days ago</cite>
+                                        </div>
                                     @endauth
                                 </div>
                             </div>
                             <!-- user notification -->
                             <!-- user cart -->
+
                             <div class="cart-btn cart-dropdown">
-                                <a href="#" class="text-light-green fw-700"> <i class="fas fa-shopping-bag"></i>
-                                    <span class="user-alert-cart">3</span>
+                                {{-- <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span> --}}
+                                <a href="#" class="text-light-green fw-700"> <i
+                                        class="fas fa-shopping-bag"></i>
+                                    <span class="user-alert-cart">{{ count((array) session('cart')) }}</span>
                                 </a>
-                                <div class="cart-detail-box">
-                                    <div class="card">
+                                <div class="cart-detail-box" style="width: 400px">
+                                    <div class="card" id="cart">
                                         <div class="card-header padding-15">Your Order</div>
                                         <div class="card-body no-padding">
                                             <div class="cat-product-box">
                                                 <div class="cat-product">
+
                                                     <div class="cat-name">
-                                                        <a href="#">
-                                                            <p class="text-light-green"><span class="text-dark-white">1</span> Chilli Chicken</p> <span class="text-light-white">small, chilli chicken</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="delete-btn">
-                                                        <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="price"> <a href="#" class="text-dark-white fw-500">
-                              $2.25
-                            </a>
-                                                    </div>
+                                                        @php $total = 0 @endphp
+                                    @if(session('cart'))
+                                        @foreach(session('cart') as $id => $details)
+                                            @php $total += $details['price'] * $details['quantity'] @endphp
+                                    <div class="cat-product-box">
+                                    <div class="cat-product row">
+                                        <div class="cat-name col-8">
+                                            <a href="#">
+                                                <p class="text-light-green fw-700"><span class="text-dark-white">{{ $details['quantity'] }}</span> {{ $details['name'] }}</p> <span class="text-light-white fw-700">small, chilli chicken</span>
+                                            </a>
+                                        </div>
+                                        <div class="price col-2"> <a href="#" class="text-dark-white fw-500">
+                                            ${{ $details['price'] }}
+                                                     </a>
+                                        </div>
+
+                                        <div class="delete-btn col-2">
+                                            <a href="{{ route('remove')}}" class="text-dark-white"> <i class="far fa-trash-alt"></i>
+                                            </a>
+                                        </div>
+
                                                 </div>
                                             </div>
-                                            <div class="cat-product-box">
-                                                <div class="cat-product">
-                                                    <div class="cat-name">
-                                                        <a href="#">
-                                                            <p class="text-light-green"><span class="text-dark-white">1</span> loaded cheese</p> <span class="text-light-white">small, chilli chicken</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="delete-btn">
-                                                        <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="price"> <a href="#" class="text-dark-white fw-500">
-                              $2.25
-                            </a>
-                                                    </div>
-                                                </div>
+                                            @endforeach
+                                            @endif
                                             </div>
-                                            <div class="cat-product-box">
-                                                <div class="cat-product">
-                                                    <div class="cat-name">
-                                                        <a href="#">
-                                                            <p class="text-light-green"><span class="text-dark-white">1</span> Tortia Chicken</p> <span class="text-light-white">small, chilli chicken</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="delete-btn">
-                                                        <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="price"> <a href="#" class="text-dark-white fw-500">
-                              $2.25
-                            </a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        </div>
+
                                             <div class="item-total">
-                                                <div class="total-price border-0"> <span class="text-dark-white fw-700">Items subtotal:</span>
-                                                    <span class="text-dark-white fw-700">$9.99</span>
+                                                <div class="total-price border-0"> <span
+                                                        class="text-dark-white fw-700">Items subtotal:</span>
+                                                    <span class="text-dark-white fw-700">$ {{ $total }}</span>
                                                 </div>
                                                 <div class="empty-bag padding-15"> <a href="#">Empty bag</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-footer padding-15"> <a href="{{url('/checkout')}}" class="btn-first green-btn text-custom-white full-width fw-500">Proceed to Checkout</a>
+                                        <div class="card-footer padding-15"> <a href="{{ url('/checkout') }}"
+                                                class="btn-first green-btn text-custom-white full-width fw-500">Proceed
+                                                to Checkout</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <!-- user cart -->
                         </div>
                     </div>
                     <div class="col-sm-12 mobile-search">
                         <div class="mobile-address">
-                            <a href="#" class="delivery-add" data-toggle="modal" data-target="#address-box"> <span class="address">Brooklyn, NY</span>
+                            <a href="#" class="delivery-add" data-toggle="modal" data-target="#address-box">
+                                <span class="address">Brooklyn, NY</span>
                             </a>
                         </div>
-                        <div class="sorting-addressbox"> <span class="full-address text-light-green">Brooklyn, NY 10041</span>
+                        <div class="sorting-addressbox"> <span class="full-address text-light-green">Brooklyn, NY
+                                10041</span>
                             <div class="btns">
                                 <div class="filter-btn">
                                     <button type="button"><i class="fas fa-sliders-h text-light-green fs-18"></i>
-                  </button> <span class="text-light-green">Sort</span>
+                                    </button> <span class="text-light-green">Sort</span>
                                 </div>
                                 <div class="filter-btn">
                                     <button type="button"><i class="fas fa-filter text-light-green fs-18"></i>
-                  </button> <span class="text-light-green">Filter</span>
+                                    </button> <span class="text-light-green">Filter</span>
                                 </div>
                             </div>
                         </div>

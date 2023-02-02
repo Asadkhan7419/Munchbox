@@ -43,6 +43,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="sale">Sale Price</label>
+                                        <div class="row">
+                                            <input type="sale" name="sale" id="sale" class="form-control underlined">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="category">Category</label>
                                         <div class="row">
                                             <select name="category" id="category"  class="form-control underlined">

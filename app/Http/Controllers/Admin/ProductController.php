@@ -31,6 +31,7 @@ class ProductController extends Controller
                     'sku' => 'nullable',
                     'stock' => 'nullable',
                     'price' => 'nullable|numeric|min:1|digits_between:1,12',
+                    'sale' => 'nullable|numeric|min:1|digits_between:1,12',
                     'category' => 'nullable',
                     'tags' => 'nullable',
                     'description' => 'nullable',
@@ -40,6 +41,7 @@ class ProductController extends Controller
             $product->sku = $request->sku;
             $product->stock = $request->stock;
             $product->price = $request->price;
+            $product->sale = $request->sale;
             $product->C_id = $request->category;
             $product->tags = $request->tags;
             $product->description = $request->description;
@@ -66,7 +68,8 @@ class ProductController extends Controller
                     'name' => 'required',
                     'sku' => 'nullable',
                     'stock' => 'nullable',
-                    'price' => 'nullable',
+                    'price' => 'nullable|numeric|min:1|digits_between:1,12',
+                    'sale' => 'nullable|numeric|min:1|digits_between:1,12',
                     'category' => 'nullable',
                     'tags' => 'nullable',
                     'description' => 'nullable',
@@ -77,6 +80,7 @@ class ProductController extends Controller
                 $product->sku = $request->sku;
                 $product->stock = $request->stock;
                 $product->price = $request->price;
+                $product->sale = $request->sale;
                 $product->C_id = $request->category;
                 $product->tags = $request->tags;
                 $product->description = $request->description;

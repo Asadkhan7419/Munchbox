@@ -46,7 +46,7 @@
                         </span>
                       </div>
                     </div>
-                     
+
                     <div class="col-12">
                       <div class="form-group">
                         <label class="text-light-white fs-14">Email</label>

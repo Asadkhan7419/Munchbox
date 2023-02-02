@@ -27,7 +27,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-6">
                                         <label class="form-label" for="customFile">Profile Picture</label><br>
                                         <img style="height:100px" src="{{asset('/user_images/'.auth()->user()->image)}}" class="rounded mx-auto d-block" alt="userimg"><br>
-                                        <input type="file" class="form-control" id="customFile" name="image" />
+                                        <input type="file" class="form-control dropify" id="customFile" name="image" />
                                     </div>
                                 </div>
                                 <div class="row">
@@ -36,17 +36,16 @@
                                             <label class="text-light-white fs-14">Name</label>
                                             <input type="text" name="firstname"
                                                 class="form-control form-control-submit"
-                                                placeholder='{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}'>
+                                                placeholder='{{ Auth::user()->firstName }} {{ Auth::user()->LastName }}'>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
-                                            <label class="text-light-white fs-14">Date of Birth:</label>
-                                            <input type="date" name="dob"
-                                            value='{{ Auth::user()->dob }}'
+                                            <label class="text-light-white fs-14">Adress</label>
+                                            <input type="text" name="address"
                                                 class="form-control form-control-submit"
-                                                >
+                                                placeholder='{{ Auth::user()->address }}'>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -56,7 +55,7 @@
                                                 class="form-control form-control-submit"
                                                 placeholder='{{ Auth::user()->phone }}'>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="col-12">
                                             <div class="form-group">
                                                 <label class="text-light-white fs-14">Email</label>
                                                 <input type="email" name="email"

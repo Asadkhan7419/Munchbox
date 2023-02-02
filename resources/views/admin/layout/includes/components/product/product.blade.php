@@ -37,7 +37,8 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">SKU</th>
                                         <th scope="col">Stock</th>
-                                        <th scope="col">Price</th>
+                                        <th scope="col">Orignel Price</th>
+                                        <th scope="col">Sale Price</th>
                                         <th scope="col">Category</th>
                                         <th scope="col">Tags</th>
                                         <th scope="col">Date</th>
@@ -53,6 +54,7 @@
                                         <td>{{$data->sku}}</td>
                                         <td>{{$data->stock}}</td>
                                         <td>{{$data->price}}</td>
+                                        <td>{{$data->sale}}</td>
                                         <td>{{$data->category->name}}</td>
                                         <td>{{$data->tags}}</td>
                                         <td>{{$data->updated_at}}</td>

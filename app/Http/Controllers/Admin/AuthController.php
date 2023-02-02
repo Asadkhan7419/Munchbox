@@ -19,7 +19,7 @@ class AuthController extends Controller
         'password' => 'required|min:6'
     ]);
 
-    if(Auth::attempt($request->only('email', 'password'))){
+    if(Auth::guard('web')->attempt($request->only('email', 'password'))){
 
         return redirect('/admin/dashboard')->with('login successfull');
     }
@@ -38,4 +38,5 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/admin/login');
     }
+
 }

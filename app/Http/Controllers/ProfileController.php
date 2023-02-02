@@ -25,7 +25,7 @@ class ProfileController extends Controller
             $request->image->move(public_path('user_images'), $imageName);
             $user->image = $imageName;
         }
-        $user->dob = $request->dob;
+        $user->address = $request->address;
         $user->phone = $request->phone;
         $user->save();
 

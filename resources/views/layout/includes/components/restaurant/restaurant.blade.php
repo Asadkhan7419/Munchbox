@@ -1,4 +1,5 @@
-   <!-- restaurent top -->
+@section('content')
+  <!-- restaurent top -->
    <div class="page-banner p-relative smoothscroll" id="menu">
     <img src="assets/img/banner.jpg" class="img-fluid full-width" alt="banner">
     <div class="overlay-2">
@@ -356,6 +357,9 @@
                                                         <div class="restaurent-product-title-box">
                                                             <div class="restaurent-product-box">
                                                                 <div class="restaurent-product-title">
+                                                                    @php
+                                                                        // dd($data);
+                                                                    @endphp
 
                                                                     <h6 class="mb-2" data-toggle="modal" data-target="#restaurent-popup"><a href="javascript:void(0)" class="text-light-black fw-600">{{$data->name}}</a></h6>
 
@@ -400,11 +404,21 @@
                                                                 <span class="circle-tag">
                                                                     <img src="assets/img/svg/010-heart.svg" alt="tag">
                                                                 </span>
-                                                            <div class="restaurent-product-price">
+                                                                <div class="restaurent-product-price">
+                                                                    @if ($data->sale)
+                                                                      <h6 class="text-success fw-600 no-margin">
+                                                                        <del>{{$data->price}}Rs</del> {{$data->sale}}Rs
+                                                                        <span class="badge badge-danger">Sale</span>
+                                                                      </h6>
+                                                                    @else
+                                                                      <h6 class="text-success fw-600 no-margin">{{$data->price}}Rs</h6>
+                                                                    @endif
+                                                                  </div>
+                                                            {{-- <div class="restaurent-product-price">
                                                                 <h6 class="text-success fw-600 no-margin">{{$data->price}}Rs</h6>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="restaurent-product-cart">
-                                                                <a href=""><button >Add To Cart</button></a>
+                                                                <a href="{{ route('add.to.cart', $data->id) }}"><button >Add To Cart</button></a>
 
                                                             </div>
                                                         </div>
@@ -488,11 +502,21 @@
                                                                 <span class="circle-tag">
                                                                     <img src="assets/img/svg/010-heart.svg" alt="tag">
                                                                 </span>
-                                                            <div class="restaurent-product-price">
+                                                                <div class="restaurent-product-price">
+                                                                    @if ($data->sale)
+                                                                      <h6 class="text-success fw-600 no-margin">
+                                                                        <del>{{$data->price}}Rs</del> {{$data->sale}}Rs
+                                                                        <span class="badge badge-danger">Sale</span>
+                                                                      </h6>
+                                                                    @else
+                                                                      <h6 class="text-success fw-600 no-margin">{{$data->price}}Rs</h6>
+                                                                    @endif
+                                                                  </div>
+                                                            {{-- <div class="restaurent-product-price">
                                                                 <h6 class="text-success fw-600 no-margin">{{$data->price}}Rs</h6>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="restaurent-product-cart">
-                                                                <a href=""><button >Add To Cart</button></a>
+                                                                <a href="{{ route('add.to.cart', $data->id) }}"><button >Add To Cart</button></a>
 
                                                             </div>
                                                         </div>
@@ -545,88 +569,63 @@
                     </div>
                     <div class="cart-detail-box">
                         <div class="card">
+                            @if (session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
                             <div class="card-header padding-15 fw-700">Your Order</div>
                             <div class="card-body no-padding" id="scrollstyle-4">
+                                @php $subtotal = 0 @endphp
+                                @if(session('cart'))
+                                {{-- @php
+                                        dd(session('cart'));
+                                    @endphp --}}
+                                    @foreach(session('cart') as $id => $details)
+                                    {{-- @php
+                                        dd($details);
+                                    @endphp --}}
+                                        @php $subtotal += $details['price'] * $details['quantity'] @endphp
                                 <div class="cat-product-box">
                                     <div class="cat-product">
                                         <div class="cat-name">
                                             <a href="#">
-                                                <p class="text-light-green fw-700"><span class="text-dark-white">1</span> Chilli Chicken Pizza</p> <span class="text-light-white fw-700">small, chilli chicken</span>
+                                                <p class="text-light-green fw-700"><span class="text-dark-white">
+
+                                                    {{ $details['quantity'] }}
+
+                                                </span> {{ $details['name'] }}</p> <span class="text-light-white fw-700">small, chilli chicken</span>
                                             </a>
                                         </div>
                                         <div class="delete-btn">
-                                            <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
+                                            <a href="{{route('empty')}}" class="text-dark-white"> <i class="far fa-trash-alt"></i>
                                             </a>
                                         </div>
                                         <div class="price"> <a href="#" class="text-dark-white fw-500">
-                      $2.25
-                    </a>
+                                            Rs{{ $details['price'] }} </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cat-product-box">
-                                    <div class="cat-product">
-                                        <div class="cat-name">
-                                            <a href="#">
-                                                <p class="text-light-green fw-700"><span class="text-dark-white">1</span> Chilli Chicken Pizza</p> <span class="text-light-white fw-700">small, chilli chicken</span>
-                                            </a>
-                                        </div>
-                                        <div class="delete-btn">
-                                            <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                                            </a>
-                                        </div>
-                                        <div class="price"> <a href="#" class="text-dark-white fw-500">
-                      $2.25
-                    </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cat-product-box">
-                                    <div class="cat-product">
-                                        <div class="cat-name">
-                                            <a href="#">
-                                                <p class="text-light-green fw-700"><span class="text-dark-white">1</span> Chilli Chicken Pizza</p> <span class="text-light-white fw-700">small, chilli chicken</span>
-                                            </a>
-                                        </div>
-                                        <div class="delete-btn">
-                                            <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                                            </a>
-                                        </div>
-                                        <div class="price"> <a href="#" class="text-dark-white fw-500">
-                      $2.25
-                    </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cat-product-box">
-                                    <div class="cat-product">
-                                        <div class="cat-name">
-                                            <a href="#">
-                                                <p class="text-light-green fw-700"><span class="text-dark-white">1</span> Chilli Chicken Pizza</p> <span class="text-light-white fw-700">small, chilli chicken</span>
-                                            </a>
-                                        </div>
-                                        <div class="delete-btn">
-                                            <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                                            </a>
-                                        </div>
-                                        <div class="price"> <a href="#" class="text-dark-white fw-500">
-                      $2.25
-                    </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @endif
+
                                 <div class="item-total">
                                     <div class="total-price border-0"> <span class="text-dark-white fw-700">Items subtotal:</span>
-                                        <span class="text-dark-white fw-700">$9.00</span>
+                                        <span class="text-dark-white fw-700">Rs {{ $subtotal }}</span>
                                     </div>
-                                    <div class="empty-bag padding-15 fw-700"> <a href="#">Empty bag</a>
+
+                                    <div class="empty-bag padding-15 fw-700"> <a href="{{route('empty')}}">Empty bag</a>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="card-footer padding-15"> <a href="{{url('/checkout')}}" class="btn-first green-btn text-custom-white full-width fw-500">Proceed to Checkout</a>
                             </div>
+
                         </div>
                     </div>
+
+                    {{--  --}}
                 </div>
             </div>
         </div>
@@ -1177,3 +1176,49 @@
     </div>
 </section>
 <!-- offer near -->
+@endsection
+@section('scripts')
+<script type="text/javascript">
+
+    $(".update-cart").change(function (e) {
+        e.preventDefault();
+
+        var ele = $(this);
+
+        $.ajax({
+            url: '{{ route('update.cart') }}',
+            method: "patch",
+            data: {
+                _token: '{{ csrf_token() }}',
+                id: ele.parents("tr").attr("data-id"),
+                quantity: ele.parents("tr").find(".quantity").val()
+            },
+            success: function (response) {
+               window.location.reload();
+            }
+        });
+    });
+
+    $(".remove").click(function (e) {
+        e.preventDefault();
+
+        var ele = $(this);
+
+        if(confirm("Are you sure want to remove?")) {
+            $.ajax({
+                url: '{{ route('remove') }}',
+                type: "POST",
+                dataType: 'json',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: ele.parents("tr").attr("data-id")
+                },
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+
+</script>
+@endsection

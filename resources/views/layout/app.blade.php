@@ -37,12 +37,14 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
     <!-- place -->
+
 </head>
 
 
 <body>
 
     @php
+        $user = \App\Models\Customer::first();
         $setting = \App\Models\Setting::first();
         $product = \App\Models\Product::first();
         $categories = \App\Models\Category::first();
@@ -55,6 +57,10 @@
 
 
 <!-- Place all Scripts Here -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- jQuery -->
     <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
     <!-- Popper -->
@@ -76,6 +82,9 @@
     <!-- Munch Box Js -->
     <script src="{{ asset('/assets/js/munchbox.js') }}"></script>
     <!-- /Place all Scripts Here -->
+    {{-- cart --}}
+
+    {{-- cart --}}
 </body>
 <!-- munchbox/  05 Dec 2019 10:11:37 GMT -->
 </html>
