@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AuthController as admin;
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -96,6 +97,10 @@ use App\Http\Controllers\Admin\AuthController as admin;
     Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('update.profile');
 });
 
+Route::controller(PaymentController::class)->group(function(){
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
 
     // Admin logout route
     Route::get('/admin/logout', [admin::class, 'logout']);

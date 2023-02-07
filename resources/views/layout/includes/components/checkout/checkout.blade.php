@@ -223,47 +223,46 @@
                                                             </p>
                                                         </div>
                                                         <div class="tab-pane fade" id="newcreditcard">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="text-light-white fw-700">Card
-                                                                            Number</label>
-                                                                        <div class="credit-card card-front p-relative">
-                                                                            <input type="text" name="#"
-                                                                                class="form-control form-control-submit"
-                                                                                placeholder="1234 5678 9101 1234">
-                                                                        </div>
-                                                                    </div>
+                                                            @if (Session::has('success'))
+                                                            <div class="alert alert-success text-center">
+                                                               <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                                               <p>{{ Session::get('success') }}</p><br>
+                                                            </div>
+                                                            @endif
+                                                            <br>
+                                                            <div>
+                                                            <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+                                                                @csrf
+                                                                <div class='form-row row'>
+                                                                   <div class='col-xs-12 col-md-6 form-group required'>
+                                                                      <label class='control-label'>Name on Card</label>
+                                                                      <input class='form-control' size='4' type='text'>
+                                                                   </div>
+                                                                   <div class='col-xs-12 col-md-6 form-group required'>
+                                                                      <label class='control-label'>Card Number</label>
+                                                                      <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+                                                                   </div>
                                                                 </div>
-                                                                <div class="col-md-2">
-                                                                    <div class="form-group">
-                                                                        <label class="text-light-white fw-700">Expires
-                                                                            on</label>
-                                                                        <input type="text" name="#"
-                                                                            class="form-control form-control-submit"
-                                                                            placeholder="12/21">
-                                                                    </div>
+                                                                <div class='form-row row'>
+                                                                   <div class='col-xs-12 col-md-4 form-group cvc required'>
+                                                                      <label class='control-label'>CVC</label>
+                                                                      <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+                                                                   </div>
+                                                                   <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                                                      <label class='control-label'>Expiration Month</label>
+                                                                      <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+                                                                   </div>
+                                                                   <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                                                      <label class='control-label'>Expiration Year</label>
+                                                                      <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+                                                                   </div>
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="text-light-white fw-700">Security
-                                                                            Code</label>
-                                                                        <div class="credit-card card-back p-relative">
-                                                                            <input type="text" name="#"
-                                                                                class="form-control form-control-submit"
-                                                                                placeholder="123">
-                                                                        </div>
-                                                                    </div>
+                                                                <div class="form-row row">
+                                                                   <div class="col-xs-12">
+                                                                      <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
+                                                                   </div>
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="text-light-white fw-700">ZIP
-                                                                            Code</label>
-                                                                        <input type="text" name="#"
-                                                                            class="form-control form-control-submit"
-                                                                            placeholder="123456">
-                                                                    </div>
-                                                                </div>
+                                                             </form>
                                                                 <div class="col-12">
                                                                     <div class="form-group">
                                                                         <label class="custom-checkbox">
@@ -757,30 +756,75 @@
                                                 class="text-light-green fw-600">coupon code:</span>
                                             <span class="text-light-green fw-600">10%</span>
                                         </div>
-                                        {{-- <div class="total-price border-0 pt-0 pb-0"> <span class="text-dark-white fw-600">Sales tax:</span>
-                                            <span class="text-dark-white fw-600">$1.50</span>
-                                        </div>
-                                        <div class="total-price border-0 pt-0 pb-0"> <span class="text-dark-white fw-600">Tip:</span>
-                                            <span class="text-dark-white fw-600">$1.50</span>
-                                        </div>
-                                        <div class="total-price border-0 "> <span class="text-light-black fw-700">Total:</span>
-                                            <span class="text-light-black fw-700">$18.50</span>
-                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="card-footer p-0 modify-order">
                                     <button class="text-custom-white full-width fw-500 bg-light-green"><i
                                             class="fas fa-chevron-left mr-2"></i> Modify Your Order</button>
                                     <a href="#" class="total-amount"> <span
-                                            class="text-custom-white fw-700">TOTAL</span>
+                                            class="text-custom-white fw-700">TOTAL Bill</span>
                                         <span class="text-custom-white fw-700">$ {{ $subtotal }}</span>
                                     </a>
+                                    <a href="#" class="total-amount">
+                                        <span class="text-custom-white fw-700">Discount Bill</span>
+                                        <span class="text-custom-white fw-700">$ {{ $subtotal * 0.9 }}</span>
+                                      </a>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </form>
     </div>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+$(function() {
+  var $form = $(".require-validation");
+  $('form.require-validation').bind('submit', function(e) {
+    var $form = $(".require-validation"),
+    inputSelector = ['input[type=email]', 'input[type=password]', 'input[type=text]', 'input[type=file]', 'textarea'].join(', '),
+    $inputs = $form.find('.required').find(inputSelector),
+    $errorMessage = $form.find('div.error'),
+    valid = true;
+    $errorMessage.addClass('hide');
+    $('.has-error').removeClass('has-error');
+    $inputs.each(function(i, el) {
+        var $input = $(el);
+        if ($input.val() === '') {
+            $input.parent().addClass('has-error');
+            $errorMessage.removeClass('hide');
+            e.preventDefault();
+        }
+    });
+    if (!$form.data('cc-on-file')) {
+      e.preventDefault();
+      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+      Stripe.createToken({
+          number: $('.card-number').val(),
+          cvc: $('.card-cvc').val(),
+          exp_month: $('.card-expiry-month').val(),
+          exp_year: $('.card-expiry-year').val()
+      }, stripeResponseHandler);
+    }
+  });
+
+  function stripeResponseHandler(status, response) {
+      if (response.error) {
+          $('.error')
+              .removeClass('hide')
+              .find('.alert')
+              .text(response.error.message);
+      } else {
+          /* token contains id, last4, and card type */
+          var token = response['id'];
+          $form.find('input[type=text]').empty();
+          $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+          $form.get(0).submit();
+      }
+  }
+});
+</script>
 </section>
