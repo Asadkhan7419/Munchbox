@@ -46,200 +46,96 @@
                                 </a>
                             </div>
                             <div>
-                                {{-- @php
-                                    dd(Auth::guard('customer')->user()->firstName);
+                               {{-- @php
+                                   dd(Auth::guard('customer')->user()->firstName);
                                 @endphp --}}
                                 <!-- class="catring parent-megamenu" -->
-                                @guest
-                                    <div>
-                                        <a href="/login"> <span>Login </span>|
 
-                                            <a href="/register"> <span>Sign-up </span>
-                                    </div>
+                                {{-- @if (Auth::guard('customer')->check())
+                                    @dd('login');
+                                <p>User is login.</p>
+                                @endif --}}
 
-                                @endguest
-                                <!-- <i class="fas fa-bars"></i> -->
-                                </a>
 
-                                <!-- <a href="#"> <span>Pages <i class="fas fa-caret-down"></i></span>
-                                <i class="fas fa-bars"></i>
-                                <div class="megamenu">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-md-5">
-                                                    <div class="ex-collection-box h-100">
-                                                        <a href="#">
-                                                            <img src="assets/img/nav-1.jpg" class="img-fluid full-width h-100" alt="image">
-                                                        </a>
-                                                        <div class="category-type overlay padding-15"> <a href="restaurant.html" class="category-btn">Top rated</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8 col-md-7">
-                                                    <div class="row">
-                                                        <div class="col-lg-3 col-sm-6">
-                                                            <div class="menu-style">
-                                                                <div class="menu-title">
-                                                                    <h6 class="cat-name"><a href="#" class="text-light-black">Home Pages</a></h6>
-                                                                </div>
-                                                                <ul>
-                                                                    <li class="active"><a href="index-2.html" class="text-light-white fw-500">Landing Page</a>
-                                                                    </li>
-                                                                    <li><a href="homepage-1.html" class="text-light-white fw-500">Home Page 1</a>
-                                                                    </li>
-                                                                    <li><a href="homepage-2.html" class="text-light-white fw-500">Home Page 2</a>
-                                                                    </li>
-                                                                    <li><a href="homepage-3.html" class="text-light-white fw-500">Home Page 3</a>
-                                                                    </li>
-                                                                    <li><a href="homepage-4.html" class="text-light-white fw-500">Home Page 4</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3 col-sm-6">
-                                                            <div class="menu-style">
-                                                                <div class="menu-title">
-                                                                    <h6 class="cat-name"><a href="#" class="text-light-black">Inner Pages</a></h6>
-                                                                </div>
-                                                                <ul>
-                                                                    <li><a href="blog.html" class="text-light-white fw-500">Blog Grid View</a>
-                                                                    </li>
-                                                                    <li><a href="blog-style-2.html" class="text-light-white fw-500">Blog Grid View 2</a>
-                                                                    </li>
-                                                                    <li><a href="blog-details.html" class="text-light-white fw-500">Blog Details</a>
-                                                                    </li>
-                                                                    <li><a href="ex-deals.html" class="text-light-white fw-500">Ex Deals</a>
-                                                                    </li>
-                                                                    <li><a href="about.html" class="text-light-white fw-500">About Us</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3 col-sm-6">
-                                                            <div class="menu-style">
-                                                                <div class="menu-title">
-                                                                    <h6 class="cat-name"><a href="#" class="text-light-black">Related Pages</a></h6>
-                                                                </div>
-                                                                <ul>
-                                                                    <li><a href="restaurant.html" class="text-light-white fw-500">Restaurant</a>
-                                                                    <li><a href="restaurant-style-1.html" class="text-light-white fw-500">Restaurant 1</a>
-                                                                    </li>
-                                                                    <li><a href="restaurant-style-2.html" class="text-light-white fw-500">Restaurant 2</a>
-                                                                    </li>
-                                                                    <li><a href="add-restaurant.html" class="text-light-white fw-500">Add Restaurant</a>
-                                                                    </li>
-                                                                    <li><a href="list-view.html" class="text-light-white fw-500">List View</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3 col-sm-6">
-                                                            <div class="menu-style">
-                                                                <div class="menu-title">
-                                                                    <h6 class="cat-name"><a href="#" class="text-light-black">Additional Pages</a></h6>
-                                                                </div>
-                                                                <ul>
-                                                                     @guest
-                                                                        <li><a href="{{ url('/login') }}" class="text-light-white fw-500">Login</a>
-                                                                        </li>
-                                                                    @endguest
-                                                                    @auth
-                                                                        <li><a href="{{ url('/logout') }}" class="text-light-white fw-500">Logout</a>
-                                                                        </li>
-                                                                    @endauth
-                                                                    <li><a href="/register" class="text-light-white fw-500">Sign-up</a>
-                                                                    </li>
-                                                                    <li><a href="/checkout" class="text-light-white fw-500">Checkout</a>
-                                                                    </li>
-                                                                    <li><a href="/orderdetails" class="text-light-white fw-500">Order Details</a>
-                                                                    </li>
-                                                                    <li><a href="/geolocator" class="text-light-white fw-500">Geo Locator</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-                            </div>
-                            <!-- mobile search -->
                             <div class="mobile-search">
-                                <a href="#" data-toggle="modal" data-target="#search-box"> <i
-                                        class="fas fa-search"></i>
+                                <a href="#" data-toggle="modal" data-target="#search-box">
+                                    <i class="fas fa-search"></i>
                                 </a>
                             </div>
-                            <!-- mobile search -->
-                            <!-- user account -->
-                             @auth
+
+                            @if (Auth::guard('customer')->check())
                                 <div class="user-details p-relative">
                                     <a href="#" class="text-light-white fw-500">
-                                        <img style="height:40px" src="{{ asset('/user_images/' . auth()->user()->image) }}"
-                                            class="rounded-circle" alt="userimg"> <span>{{ Auth::user()->firstName }}
-                                        </span>
-
+                                        <img style="height:40px" src="{{ asset('/user_images/' . Auth::guard('customer')->user()->image) }}" class="rounded-circle" alt="userimg">
+                                        <span>{{ Auth::guard('customer')->user()->firstName }}</span>
                                     </a>
                                     <div class="user-dropdown">
                                         <ul>
                                             <li>
                                                 <a href="order-details.html">
-                                                    <div class="icon"><i class="flaticon-rewind"></i>
-                                                    </div> <span class="details">Past Orders</span>
+                                                    <div class="icon"><i class="flaticon-rewind"></i></div>
+                                                    <span class="details">Past Orders</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="order-details.html">
-                                                    <div class="icon"><i class="flaticon-takeaway"></i>
-                                                    </div> <span class="details">Upcoming Orders</span>
+                                                    <div class="icon"><i class="flaticon-takeaway"></i></div>
+                                                    <span class="details">Upcoming Orders</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <div class="icon"><i class="flaticon-breadbox"></i>
-                                                    </div> <span class="details">Saved</span>
+                                                    <div class="icon"><i class="flaticon-breadbox"></i></div>
+                                                    <span class="details">Saved</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <div class="icon"><i class="flaticon-gift"></i>
-                                                    </div> <span class="details">Gift cards</span>
+                                                    <div class="icon"><i class="flaticon-gift"></i></div>
+                                                    <span class="details">Gift cards</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="/profile">
-                                                    <div class="icon"><i class="flaticon-refer"></i>
-                                                    </div> <span class="details">Profile</span>
+                                                    <div class="icon"><i class="flaticon-refer"></i></div>
+                                                    <span class="details">Profile</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <div class="icon"><i class="flaticon-diamond"></i>
-                                                    </div> <span class="details">Perks</span>
+                                                    <div class="icon"><i class="flaticon-diamond"></i></div>
+                                                    <span class="details">Perks</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <div class="icon"><i class="flaticon-user"></i>
-                                                    </div> <span class="details">Account</span>
+                                                    <div class="icon"><i class="flaticon-user"></i></div>
+                                                    <span class="details">Account</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <div class="icon"><i class="flaticon-board-games-with-roles"></i>
-                                                    </div> <span class="details">Help</span>
+                                                    <div class="icon"><i class="flaticon-board-games-with-roles"></i></div>
+                                                    <span class="details">Help</span>
                                                 </a>
                                             </li>
                                         </ul>
-                                        <div class="user-footer"> <span class="text-light-black"></span> <a
-                                                href="{{ url('/logout') }}">Sign Out</a>
+                                        <div class="user-footer">
+                                            <span class="text-light-black"></span>
+                                            <a href="{{ url('/logout') }}">Sign Out</a>
                                         </div>
                                     </div>
+
                                 </div>
-                             @endauth
+
+                                @else
+
+                                <div>
+                                    <a href="/login"><span>Login</span></a>|
+                                    <a href="/register"><span>Sign-up</span></a>
+                                </div>
+
+                            @endif
                             <!-- mobile search -->
                             <!-- user notification -->
                             @auth

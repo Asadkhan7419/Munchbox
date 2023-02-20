@@ -30,8 +30,8 @@ use App\Http\Controllers\PaymentController;
 */
 // Prefix admin
     // web Route
-    Route::get('/', [HomeController::class, 'index']);
-    Route::group(['middleware'=>'guest'],function(){
+    Route::get('/', [HomeController::class, 'index'])->name('customers.dashboard');
+    //Route::group(['middleware'=>'guest'],function(){
     // Prefix Admin Routes
     Route::get('/admin/login', [admin::class, 'adminLogin']);
     Route::post('/admin/login', [admin::class, 'login']);
@@ -45,9 +45,9 @@ use App\Http\Controllers\PaymentController;
     Route::get('/geolocator', [GeolocatorController::class, 'index']);
     Route::get('/orderDetails', [OrderdetailsController::class, 'index']);
     Route::get('/list_view', [HomeController::class, 'listview']);
-    });
+    //});
 
-    Route::group(['middleware'=>'auth'],function(){
+    // Route::group(['middleware'=>'auth'],function(){
     // Admin Routes
     Route::get('/admin/dashboard', [DashboardController::class, 'indexAdmin']);
     // Admin/Setting Routes
@@ -95,7 +95,7 @@ use App\Http\Controllers\PaymentController;
     Route::post('/orderstore', [OrderdetailsController::class, 'store']);
     Route::get('/profile', [ProfileController::class, 'profile']);
     Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('update.profile');
-});
+// });
 
 Route::controller(PaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');

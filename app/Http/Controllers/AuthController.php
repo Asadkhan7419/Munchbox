@@ -13,6 +13,10 @@ class AuthController extends Controller
         return view('pages.user.login');
     }
 
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
     public function login(Request $request){
             $request->validate([
             'email' => 'required|email',
@@ -20,7 +24,7 @@ class AuthController extends Controller
         ]);
         // dd($request->only('email', 'password'));
         if(Auth::guard('customer')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect('/')->with('login successfull');
+            return redirect()->route('customers.dashboard')->with('login successfull');
         }
         dd('invalid');
         return redirect('/login')->with('Login details invalid');

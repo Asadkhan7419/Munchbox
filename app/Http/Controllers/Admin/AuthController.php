@@ -12,6 +12,11 @@ class AuthController extends Controller
         return view('pages.admin.auth.login');
     }
 
+    // public function __construct()
+    // {
+    //     $this->middleware('guest')->except('logout');
+    // }
+
     public function login(Request $request){
 
         $request->validate([
